@@ -26,6 +26,7 @@
         <link  rel="stylesheet" href="css/font.css">
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"  type="text/javascript"></script>
+        <link rel = " shortcut icon" type = "image/png" href = "./image/favicon.png"/>
     </head>
 
     <body>

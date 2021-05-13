@@ -10,6 +10,7 @@
 		$quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by RAND()")->fetch_array();
 		?>
 		<title><?php echo $quiz['title'] ?> | Answer Sheet</title>
+		<link rel = " shortcut icon" type = "image/png" href = "./image/favicon.png"/>
 	</head>
 	<body>
 		<style>
