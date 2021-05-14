@@ -34,33 +34,6 @@ div#main{
 	padding: 20px
 }
 
-.admin{
-    margin-top: 10px;
-    margin-left:250px;
-    padding: 20px;
-    width:100% !important;
-}
-
 .pull-right{
 	float: right;
 }
-
-button.btn-rounded{
-	border-radius: 50% !important;
-}
-
-#login-body>.card{
-      top:15vh;
-}
-
-#login-body>.card>.card-header-edge {
-    position: relative;
-    top: -1em;
-    width: 100%;
-    min-height: 3em;
-    padding: 1em;
-    text-align: center;
-    font-size: 1.5em;
-    background: rgb(9,12,168);
-    background: radial-gradient(circle, rgba(9,12,168,1) 0%, rgba(98,167,247,1) 100%);
-}   

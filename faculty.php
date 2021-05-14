@@ -6,7 +6,6 @@
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
 		<title>Faculty List</title>
-		<link rel = " shortcut icon" type = "image/png" href = "./image/favicon.png"/>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>

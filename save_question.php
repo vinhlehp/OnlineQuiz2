@@ -42,13 +42,12 @@ if(empty($id)){
 			}
 			if(count($insert) == 4){
 				echo 1;
-			}else{
+			}
+			else{
 				$delete = $conn->query("DELETE FROM questions where id =".$id);
 				$delete2 = $conn->query("DELETE FROM question_opt where question_id =".$id);
 				echo 2;
-				
 			}
-
-			}
+		}
 	}
 ?>

@@ -1,12 +1,10 @@
 <?php
     include_once 'database.php';
     session_start();
-    if(!(isset($_SESSION['email'])))
-    {
+    if(!(isset($_SESSION['email']))){
         header("location:login.php");
     }
-    else
-    {
+    else{
         $name = $_SESSION['name'];
         $email = $_SESSION['email'];
         include_once 'database.php';

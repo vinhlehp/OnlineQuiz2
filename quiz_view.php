@@ -9,7 +9,6 @@
 
 		<?php 
 		$qry = $conn->query("SELECT * FROM quiz_list where id = ".$_GET['id'])->fetch_array();
-
 		?>
 	</head>
 	<body>
