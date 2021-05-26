@@ -78,19 +78,17 @@
 							</div>
 								<label>Options:</label>
 							<div class="form-group">
-								<textarea rows="2" name ="question_opt[0]" required="" class="form-control" ></textarea>
-								<span>
-									<label><input type="radio" name="is_right[0]" class="is_right" value="1"> <small>Question Answer</small></label>
-								</span>
+								<label><input type="radio" name="is_right[0]" class="is_right" value="1"> <small>Question Answer</small></label>
+								<textarea rows="2" name ="question_opt[0]" required="" class="form-control" ></textarea>		
 								<br>
-								<textarea rows="2" name ="question_opt[1]" required="" class="form-control" ></textarea>
 								<label><input type="radio" name="is_right[1]" class="is_right" value="1"> <small>Question Answer</small></label>
+								<textarea rows="2" name ="question_opt[1]" required="" class="form-control" ></textarea>
 								<br>
-								<textarea rows="2" name ="question_opt[2]" required="" class="form-control" ></textarea>
 								<label><input type="radio" name="is_right[2]" class="is_right" value="1"> <small>Question Answer</small></label>
+								<textarea rows="2" name ="question_opt[2]" required="" class="form-control" ></textarea>
 								<br>
-								<textarea rows="2" name ="question_opt[3]" required="" class="form-control" ></textarea>
 								<label><input type="radio" name="is_right[3]" class="is_right" value="1"> <small>Question Answer</small></label>
+								<textarea rows="2" name ="question_opt[3]" required="" class="form-control" ></textarea>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -118,9 +116,9 @@
 								<?php 
 									$student = $conn->query('SELECT u.*,s.level_section as ls FROM users u left join students s on u.id = s.user_id where u.user_type = 3 ');
 									while($row=$student->fetch_assoc()){
-										?>	
+								?>	
 										<option value="<?php echo $row['id'] ?>"><?php echo ucwords($row['name']).' '.$row['ls'] ?></option>
-										<?php } ?>
+									<?php } ?>
 								</select></select>
 							</div>				
 						</div>

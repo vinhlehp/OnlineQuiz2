@@ -52,7 +52,7 @@
                             <?php endif; ?>
                             </tr>
                             <?php
-                            }
+                                    }
                             ?>
                         </tbody>  
                     </table>

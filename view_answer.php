@@ -9,7 +9,7 @@
 			$quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id'])->fetch_array();
 			$hist = $conn->query("SELECT * FROM history where quiz_id =".$_GET['id']." and user_id = ".$_SESSION['login_id'])->fetch_array();
 		?>
-		<title><?php echo $quiz['title'] ?> | Answer Sheet</title>
+		<title><?php echo $quiz['title'] ?>Answer Sheet | Online Quiz System</title>
 	</head>
 	<body>
 		<style>
@@ -60,7 +60,7 @@
 							</li>
 						</ul>
 
-					<?php } ?>
+					<?php  	} ?>
 				</div>	
 			</div>
 		</div>

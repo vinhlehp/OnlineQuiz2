@@ -5,7 +5,7 @@
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
-		<title>History</title>
+		<title>History | Online Quiz System</title>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
@@ -17,15 +17,15 @@
 				<select class="form-control select2" onchange="location.replace('history.php?quiz_id='+this.value)">
 					<option value="all" <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == 'all' ? 'selected' : '' ?>>All</option>
 					<?php 
-					$where =''; 
-					if($_SESSION['login_user_type'] == 2){
-						$where = ' where user_id = '.$_SESSION['login_id'].' '; 
-					}
-					$quiz = $conn->query("SELECT * FROM quiz_list ".$user_id." order by title asc");
-					while($row = $quiz->fetch_assoc()){
+						$where =''; 
+						if($_SESSION['login_user_type'] == 2){
+							$where = ' where user_id = '.$_SESSION['login_id'].' '; 
+						}
+						$quiz = $conn->query("SELECT * FROM quiz_list ".$user_id." order by title asc");
+						while($row = $quiz->fetch_assoc()){
 					?>
 					<option value="<?php echo $row['id'] ?>" <?php echo isset($_GET['quiz_id']) && $_GET['quiz_id'] == $row['id']  ? 'selected' : '' ?>><?php echo $row['title'] ?></option>
-				<?php } ?>
+					<?php } ?>
 				</select>
 			</div>
 			<div class="card">
@@ -48,24 +48,23 @@
 						</thead>
 						<tbody>
 						<?php
-						$where = '';
-						if($_SESSION['login_user_type'] == 2){
-							$where = ' where q.user_id = '.$_SESSION['login_id'].' ';
-						}
-						if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
-							if(empty($where)){
-							$where = ' where q.id = '.$_GET['quiz_id'].' ';
-
-							}else{
-							$where = ' and q.id = '.$_GET['quiz_id'].' ';
-
+							$where = '';
+							if($_SESSION['login_user_type'] == 2){
+								$where = ' where q.user_id = '.$_SESSION['login_id'].' ';
 							}
-						}
-						$qry = $conn->query("SELECT h.*,u.name as student,q.title from history h inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc ");
-						$i = 1;
-						if($qry->num_rows > 0){
-							while($row= $qry->fetch_assoc()){
-								
+							if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
+								if(empty($where)){
+								$where = ' where q.id = '.$_GET['quiz_id'].' ';
+
+								}else{
+								$where = ' and q.id = '.$_GET['quiz_id'].' ';
+
+								}
+							}
+							$qry = $conn->query("SELECT h.*,u.name as student,q.title from history h inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc ");
+							$i = 1;
+							if($qry->num_rows > 0){
+								while($row= $qry->fetch_assoc()){
 							?>
 						<tr>
 							<td><?php echo $i++ ?></td>
@@ -74,8 +73,8 @@
 							<td class="text-center"><?php echo $row['score'].'/'.$row['total_score']  ?></td>
 						</tr>
 						<?php
-						}
-						}
+								}
+							}
 						?>
 						</tbody>
 					</table>
@@ -154,7 +153,6 @@
 								location.reload()
 							}else{
 							$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
-
 							}
 						}
 					}

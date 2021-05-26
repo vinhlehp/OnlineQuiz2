@@ -5,11 +5,10 @@
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
-		<title>Faculty List</title>
+		<title>Faculty List | Online Quiz System</title>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
-		
 		<div class="container-fluid admin">
 			<div class="col-md-12 alert alert-primary">Faculty List</div>
 			<button class="btn btn-primary bt-sm" id="new_faculty"><i class="fa fa-plus"></i>	Add New</button>
@@ -34,11 +33,11 @@
 						</thead>
 						<tbody>
 						<?php
-						$qry = $conn->query("SELECT f.*,u.name from faculty f left join users u  on f.user_id = u.id order by u.name asc ");
-						$i = 1;
-						if($qry->num_rows > 0){
-							while($row= $qry->fetch_assoc()){
-							?>
+							$qry = $conn->query("SELECT f.*,u.name from faculty f left join users u  on f.user_id = u.id order by u.name asc ");
+							$i = 1;
+							if($qry->num_rows > 0){
+								while($row= $qry->fetch_assoc()){
+						?>
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $row['name'] ?></td>
@@ -51,8 +50,8 @@
 							</td>
 						</tr>
 						<?php
-						}
-						}
+								}
+							}
 						?>
 						</tbody>
 					</table>
@@ -63,7 +62,6 @@
 			<div class="modal-dialog modal-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						
 						<h4 class="modal-title" id="myModallabel">Add New Faculty</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>

@@ -7,9 +7,9 @@
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
 		<?php 
-		$quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by RAND()")->fetch_array();
+			$quiz = $conn->query("SELECT * FROM quiz_list where id =".$_GET['id']." order by RAND()")->fetch_array();
 		?>
-		<title><?php echo $quiz['title'] ?> | Answer Sheet</title>
+		<title><?php echo $quiz['title'] ?>Answer Sheet | Online Quiz System</title>
 		<link rel = " shortcut icon" type = "image/png" href = "./image/favicon.png"/>
 	</head>
 	<body>
@@ -35,10 +35,10 @@
 						<input type="hidden" name="quiz_id" value="<?php echo $quiz['id'] ?>">
 						<input type="hidden" name="qpoints" value="<?php echo $quiz['qpoints'] ?>">
 						<?php
-						$question = $conn->query("SELECT * FROM questions where qid = '".$quiz['id']."' order by order_by asc ");
-						$i = 1 ;
-						while($row =$question->fetch_assoc()){
-							$opt = $conn->query("SELECT * FROM question_opt where question_id = '".$row['id']."' order by RAND() ");
+							$question = $conn->query("SELECT * FROM questions where qid = '".$quiz['id']."' order by order_by asc ");
+							$i = 1 ;
+							while($row =$question->fetch_assoc()){
+								$opt = $conn->query("SELECT * FROM question_opt where question_id = '".$row['id']."' order by RAND() ");
 						?>
 
 						<ul class="q-items list-group mt-4 mb-4">
@@ -91,7 +91,6 @@
 					}
 				})
 			})
-			
 		})
 	</script>
 </html>

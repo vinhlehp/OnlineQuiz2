@@ -18,7 +18,6 @@
 			<div class="card">
 				<div class="card-body">
 					<table class="table table-bordered" id='table'>
-						
 						<thead>
 							<tr>
 								<th>#</th>
@@ -33,15 +32,15 @@
 						</thead>
 						<tbody>
 						<?php
-						$where = '';
-						if($_SESSION['login_user_type'] == 2){
-							$where = " where u.id = ".$_SESSION['login_id']." ";
-						}
-						$qry = $conn->query("SELECT q.*,u.name as fname from quiz_list q left join users u on q.user_id = u.id ".$where." order by q.title asc ");
-						$i = 1;
-						if($qry->num_rows > 0){
-							while($row= $qry->fetch_assoc()){
-								$items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
+							$where = '';
+							if($_SESSION['login_user_type'] == 2){
+								$where = " where u.id = ".$_SESSION['login_id']." ";
+							}
+							$qry = $conn->query("SELECT q.*,u.name as fname from quiz_list q left join users u on q.user_id = u.id ".$where." order by q.title asc ");
+							$i = 1;
+							if($qry->num_rows > 0){
+								while($row= $qry->fetch_assoc()){
+									$items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
 							?>
 						<tr>
 							<td><?php echo $i++ ?></td>
@@ -60,8 +59,8 @@
 							</td>
 						</tr>
 						<?php
-						}
-						}
+							}
+								}
 						?>
 						</tbody>
 					</table>

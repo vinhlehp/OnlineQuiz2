@@ -1,3 +1,5 @@
+/<!-- Phần login ổn
+	Phần đăng ký vẫn chưa được, t nghĩ là do mình chưa link được tới database để insert data vào-->
 <!DOCTYPE html>
 	<head>
 		<title>Online Quiz System</title>
@@ -25,15 +27,15 @@
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
 				<!-- sign up form -->
-				<form method="post" action="login.php" enctype="multipart/form-data">
+				<form method="post" action="login.php">
 					<h2>Create Account</h2>
 					</br>
-					<input type="text" name = "name"required placeholder="Full name" />
+					<input type="text" name = "name" required placeholder="Full name" />
 					<input type="text" name = "username" required placeholder="Username" />
 					<input type="password" name = "password" required placeholder="Password" />
-					<input type="college" name = "college" required placeholder="University or College name"/>
+					<input type="college" name = "college" placeholder="University or College name"/>
 					</br>
-					<button name = "submit">Sign Up</button>
+					<button name = "submit_sgUp">Sign Up</button>
 				</form>
 			</div>
 				<!-- sign in form-->
@@ -64,6 +66,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- addEventListener -->
 		<script src ="./setup_account.js"></script>
 		
@@ -105,7 +108,7 @@
 				include("db_connect.php");
 				session_start();
 				
-				if(isset($_POST['submit'])){	
+				if(isset($_POST['submit_sgUp'])){	
 					$name = $_POST['name'];
 					$name = stripslashes($name);
 					$name = addslashes($name);
