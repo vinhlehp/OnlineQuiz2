@@ -54,12 +54,9 @@
 										<label><input type="radio" name="option_id[<?php echo $row['id'] ?>]" value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>> <?php echo $orow['option_txt'] ?></label>
 									</li>
 								<?php } ?>
-
 								</ul>
-
 							</li>
 						</ul>
-
 					<?php  	} ?>
 				</div>	
 			</div>
