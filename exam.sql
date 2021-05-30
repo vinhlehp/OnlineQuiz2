@@ -14,7 +14,6 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `email`, `password`) VALUES
 (1, 'suryaprasadtripathy8@gmail.com', 'pinkylove');
 
--- --------------------------------------------------------
 -- Table structure for table `answer`
 CREATE TABLE `answer` (
   `qid` text NOT NULL,
@@ -23,8 +22,6 @@ CREATE TABLE `answer` (
 
 -- Dumping data for table `answer`
 INSERT INTO `answer` (`qid`, `ansid`) VALUES
-('5b13ed3a6e006', '5b13ed3a9436a'),
-('5b13ed72489d8', '5b13ed7263d70'),
 ('5b141d712647f', '5b141d71485b9'),
 ('5b141d718f873', '5b141d71978be'),
 ('5b141d71ddb46', '5b141d71e5f43'),
@@ -43,10 +40,8 @@ INSERT INTO `answer` (`qid`, `ansid`) VALUES
 ('5b1422669481b', '5b1422669c8ea'),
 ('5b142266c525c', '5b142266cd369'),
 ('5b14226711d91', '5b14226719fb1'),
-('5b1422674286d', '5b1422674a9ee'),
 ('5b1422677371f', '5b1422677b3fc');
 
--- --------------------------------------------------------
 -- Table structure for table `history`
 CREATE TABLE `history` (
   `email` varchar(50) NOT NULL,
@@ -65,7 +60,6 @@ INSERT INTO `history` (`email`, `eid`, `score`, `level`, `sahi`, `wrong`, `date`
 ('priyanka@gmail.com', '5b141b8009cf0', 22, 10, 8, 2, '2018-06-03 16:59:06'),
 ('suryaprasadtripathy8@gmail.com', '5b141f1e8399e', 26, 10, 9, 1, '2018-06-03 17:17:26');
 
--- --------------------------------------------------------
 -- Table structure for table `options`
 CREATE TABLE `options` (
   `qid` varchar(50) NOT NULL,
@@ -75,14 +69,6 @@ CREATE TABLE `options` (
 
 -- Dumping data for table `options`
 INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
-('5b13ed3a6e006', 'sdb', '5b13ed3a9436a'),
-('5b13ed3a6e006', 'jsdb', '5b13ed3a94374'),
-('5b13ed3a6e006', 'dsbv', '5b13ed3a94377'),
-('5b13ed3a6e006', 'jbdv', '5b13ed3a94379'),
-('5b13ed72489d8', 'vsdv', '5b13ed7263d70'),
-('5b13ed72489d8', 'vsdv', '5b13ed7263d7a'),
-('5b13ed72489d8', 'vsdv', '5b13ed7263d7d'),
-('5b13ed72489d8', 'vsdv', '5b13ed7263d80'),
 ('5b141d712647f', 'Personal Home Page', '5b141d71485b9'),
 ('5b141d712647f', 'Private Home Page', '5b141d71485dc'),
 ('5b141d712647f', 'Pretext Hypertext Processor', '5b141d71485e0'),
@@ -155,16 +141,11 @@ INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
 ('5b14226711d91', '255.255.255.224', '5b14226719fb1'),
 ('5b14226711d91', '255.255.255.240', '5b14226719fb7'),
 ('5b14226711d91', '255.255.255.248', '5b14226719fbb'),
-('5b1422674286d', '6', '5b1422674a9ee'),
-('5b1422674286d', '8', '5b1422674aa01'),
-('5b1422674286d', '30', '5b1422674aa06'),
-('5b1422674286d', '32', '5b1422674aa0b'),
 ('5b1422677371f', '127.0.0.0', '5b1422677b3e9'),
 ('5b1422677371f', '1.0.0.127', '5b1422677b3f7'),
 ('5b1422677371f', '127.0.0.1', '5b1422677b3fc'),
 ('5b1422677371f', '127.0.0.255', '5b1422677b400');
 
--- --------------------------------------------------------
 -- Table structure for table `questions`
 CREATE TABLE `questions` (
   `eid` text NOT NULL,
@@ -176,8 +157,6 @@ CREATE TABLE `questions` (
 
 -- Dumping data for table `questions`
 INSERT INTO `questions` (`eid`, `qid`, `qns`, `choice`, `sn`) VALUES
-('5b13ed30cd71f', '5b13ed3a6e006', 'dbjb', 4, 1),
-('5b13ed6bb8bcd', '5b13ed72489d8', 'dvsd', 4, 1),
 ('5b141b8009cf0', '5b141d712647f', 'What does PHP stand for?', 4, 1),
 ('5b141b8009cf0', '5b141d718f873', 'Who is the father of PHP?', 4, 2),
 ('5b141b8009cf0', '5b141d71ddb46', 'PHP files have a default file extension of.', 4, 3),
@@ -196,10 +175,8 @@ INSERT INTO `questions` (`eid`, `qid`, `qns`, `choice`, `sn`) VALUES
 ('5b141f1e8399e', '5b1422669481b', 'Which of the following is a layer 2 protocol used to maintain a loop-free network?', 4, 6),
 ('5b141f1e8399e', '5b142266c525c', 'What is the maximum number of IP addresses that can be assigned to hosts on a local subnet that uses the 255.255.255.224 subnet mask?', 4, 7),
 ('5b141f1e8399e', '5b14226711d91', 'You need to subnet a network that has 5 subnets, each with at least 16 hosts. Which classful subnet mask would you use?', 4, 8),
-('5b141f1e8399e', '5b1422674286d', 'You have an interface on a router with the IP address of 192.168.192.10/29. Including the router interface, how many hosts can have IP addresses on the LAN attached to the router interface?', 4, 9),
 ('5b141f1e8399e', '5b1422677371f', 'To test the IP stack on your local host, which IP address would you ping?\r\n\r\n', 4, 10);
 
--- --------------------------------------------------------
 -- Table structure for table `quiz`
 CREATE TABLE `quiz` (
   `eid` text NOT NULL,
@@ -215,7 +192,6 @@ INSERT INTO `quiz` (`eid`, `title`, `sahi`, `wrong`, `total`, `date`) VALUES
 ('5b141b8009cf0', 'Php & Mysqli', 3, 1, 10, '2018-06-03 16:46:56'),
 ('5b141f1e8399e', 'Ip Networking', 3, 1, 10, '2018-06-03 17:02:22');
 
--- --------------------------------------------------------
 -- Table structure for table `rank`
 CREATE TABLE `rank` (
   `email` varchar(50) NOT NULL,
@@ -227,8 +203,6 @@ CREATE TABLE `rank` (
 INSERT INTO `rank` (`email`, `score`, `time`) VALUES
 ('pinky@gmail.com', 30, '2018-06-03 16:57:45'),
 ('priyanka@gmail.com', 22, '2018-06-03 16:59:06');
-
--- --------------------------------------------------------
 
 -- Table structure for table `user`
 CREATE TABLE `user` (
@@ -244,15 +218,13 @@ INSERT INTO `user` (`name`, `college`, `email`, `password`) VALUES
 ('Priyanka Pattnaik', 'National Institute of Science and Technology, Berhampur', 'priyanka@gmail.com', 'pinka');
 
 -- Indexes for dumped tables
--- Indexes for table `admin`
+  -- Indexes for table `admin`
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
--- Indexes for table `user`
+  -- Indexes for table `user`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
-
--- AUTO_INCREMENT for dumped tables
 
 -- AUTO_INCREMENT for table `admin`
 ALTER TABLE `admin`
