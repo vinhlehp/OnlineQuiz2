@@ -133,7 +133,7 @@
 						header("refresh:0;url=login.php");
 					}
 					else{
-						$str="insert into user set name='$name',usernme='$username',password='$password',college='$college', user_type = 3";
+						$str="insert into user set name='$name',username='$username',password='$password',college='$college', user_type = 3";
 						if((mysqli_query($con,$str)))	
 						echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
                         header('location: welcome.php?q=1');
