@@ -21,7 +21,6 @@ if(empty($id)){
 	$update = $conn->query('UPDATE quiz_list set  '.$data.' where id= '.$id);
 
 	if($update){
-			echo json_encode(array('status'=>1,'id'=>$id));
-		
+		echo json_encode(array('status'=>1,'id'=>$id));
 	}
 }

@@ -1,4 +1,4 @@
-/<!-- Phần login ổn
+<!-- Phần login ổn
 	Phần đăng ký vẫn chưa được, t nghĩ là do mình chưa link được tới database để insert data vào-->
 <!DOCTYPE html>
 	<head>
