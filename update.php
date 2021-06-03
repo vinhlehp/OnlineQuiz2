@@ -1,17 +1,18 @@
 <?php
 	include_once 'database.php';
-	session_start();
-	$email=$_SESSION['email'];
+  	session_start();
+  	$email=$_SESSION['email'];
 
-	if(isset($_SESSION['key'])){
-		if(@$_GET['demail'] && $_SESSION['key']=='suryapinky'){
+  	if(isset($_SESSION['key'])){
+    	if(@$_GET['demail'] && $_SESSION['key']=='suryapinky'){
 			$demail=@$_GET['demail'];
 			$r1 = mysqli_query($con,"DELETE FROM rank WHERE email='$demail' ") or die('Error');
 			$r2 = mysqli_query($con,"DELETE FROM history WHERE email='$demail' ") or die('Error');
 			$result = mysqli_query($con,"DELETE FROM user WHERE email='$demail' ") or die('Error');
 			header("location:dashboard.php?q=1");
 		}
-	}
+  }
+
 	if(isset($_SESSION['key'])){
 		if(@$_GET['q']== 'rmquiz' && $_SESSION['key']=='suryapinky'){
 			$eid=@$_GET['eid'];
@@ -21,10 +22,10 @@
 				$r1 = mysqli_query($con,"DELETE FROM options WHERE qid='$qid'") or die('Error');
 				$r2 = mysqli_query($con,"DELETE FROM answer WHERE qid='$qid' ") or die('Error');
 			}
-		$r3 = mysqli_query($con,"DELETE FROM questions WHERE eid='$eid' ") or die('Error');
-		$r4 = mysqli_query($con,"DELETE FROM quiz WHERE eid='$eid' ") or die('Error');
-		$r4 = mysqli_query($con,"DELETE FROM history WHERE eid='$eid' ") or die('Error');
-		header("location:dashboard.php?q=5");
+			$r3 = mysqli_query($con,"DELETE FROM questions WHERE eid='$eid' ") or die('Error');
+			$r4 = mysqli_query($con,"DELETE FROM quiz WHERE eid='$eid' ") or die('Error');
+			$r4 = mysqli_query($con,"DELETE FROM history WHERE eid='$eid' ") or die('Error');
+			header("location:dashboard.php?q=5");
 		}
 	}
 
@@ -41,38 +42,39 @@
 		}
 	}
 
-	if(isset($_SESSION['key'])){
+	if(isset($_SESSION['key']))
+	{
 		if(@$_GET['q']== 'addqns' && $_SESSION['key']=='suryapinky'){
-		$n=@$_GET['n'];
-		$eid=@$_GET['eid'];
-		$ch=@$_GET['ch'];
-		for($i=1;$i<=$n;$i++){
-			$qid=uniqid();
-			$qns=$_POST['qns'.$i];
-			$q3=mysqli_query($con,"INSERT INTO questions VALUES  ('$eid','$qid','$qns' , '$ch' , '$i')");
-			$oaid=uniqid();
-			$obid=uniqid();
-			$ocid=uniqid();
-			$odid=uniqid();
-			$a=$_POST[$i.'1'];
-			$b=$_POST[$i.'2'];
-			$c=$_POST[$i.'3'];
-			$d=$_POST[$i.'4'];
-			$qa=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$a','$oaid')") or die('Error61');
-			$qb=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$b','$obid')") or die('Error62');
-			$qc=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$c','$ocid')") or die('Error63');
-			$qd=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$d','$odid')") or die('Error64');
-			$e=$_POST['ans'.$i];
-			switch($e){
-				case 'a': $ansid=$oaid; break;
-				case 'b': $ansid=$obid; break;
-				case 'c': $ansid=$ocid; break;
-				case 'd': $ansid=$odid; break;
-				default: $ansid=$oaid;
+			$n=@$_GET['n'];
+			$eid=@$_GET['eid'];
+			$ch=@$_GET['ch'];
+			for($i=1;$i<=$n;$i++){
+				$qid=uniqid();
+				$qns=$_POST['qns'.$i];
+				$q3=mysqli_query($con,"INSERT INTO questions VALUES  ('$eid','$qid','$qns' , '$ch' , '$i')");
+				$oaid=uniqid();
+				$obid=uniqid();
+				$ocid=uniqid();
+				$odid=uniqid();
+				$a=$_POST[$i.'1'];
+				$b=$_POST[$i.'2'];
+				$c=$_POST[$i.'3'];
+				$d=$_POST[$i.'4'];
+				$qa=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$a','$oaid')") or die('Error61');
+				$qb=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$b','$obid')") or die('Error62');
+				$qc=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$c','$ocid')") or die('Error63');
+				$qd=mysqli_query($con,"INSERT INTO options VALUES  ('$qid','$d','$odid')") or die('Error64');
+				$e=$_POST['ans'.$i];
+				switch($e){
+					case 'a': $ansid=$oaid; break;
+					case 'b': $ansid=$obid; break;
+					case 'c': $ansid=$ocid; break;
+					case 'd': $ansid=$odid; break;
+					default: $ansid=$oaid;
+				}
+				$qans=mysqli_query($con,"INSERT INTO answer VALUES  ('$qid','$ansid')");
 			}
-			$qans=mysqli_query($con,"INSERT INTO answer VALUES  ('$qid','$ansid')");
-		}
-		header("location:dashboard.php?q=0");
+			header("location:dashboard.php?q=0");
 		}
 	}
 
@@ -83,7 +85,9 @@
 		$ans=$_POST['ans'];
 		$qid=@$_GET['qid'];
 		$q=mysqli_query($con,"SELECT * FROM answer WHERE qid='$qid' " );
-		while($row=mysqli_fetch_array($q) ){ $ansid=$row['ansid']; }
+		while($row=mysqli_fetch_array($q) ){  
+			$ansid=$row['ansid']; 
+		}
 		if($ans == $ansid){
 			$q=mysqli_query($con,"SELECT * FROM quiz WHERE eid='$eid' " );
 			while($row=mysqli_fetch_array($q) ){
@@ -133,13 +137,13 @@
 				$q2=mysqli_query($con,"INSERT INTO rank VALUES('$email','$s',NOW())")or die('Error165');
 			}
 			else{
-				while($row=mysqli_fetch_array($q) ){
+				while($row=mysqli_fetch_array($q)){
 					$sun=$row['score'];
 				}
 				$sun=$s+$sun;
 				$q=mysqli_query($con,"UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE email= '$email'")or die('Error174');
 			}
-		header("location:welcome.php?q=result&eid=$eid");
+			header("location:welcome.php?q=result&eid=$eid");
 		}
 		else{
 			header("location:welcome.php?q=result&eid=$eid");

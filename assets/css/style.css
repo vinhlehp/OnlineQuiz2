@@ -3,7 +3,6 @@ div#sidebar {
     height: 95.3%;
     position: absolute;
 }
-
 #sidebar .sidebar-item {
     position: relative;
     height: 50px;
@@ -16,7 +15,6 @@ div#sidebar {
     color: black;
     font-weight: 700
 }
-
 #sidebar .sidebar-item:hover, #sidebar .sidebar-item.active {
     text-decoration: unset;
     background: #007bff4a;
@@ -27,13 +25,17 @@ div#sidebar {
 	width:11%;
 	padding: auto;
 }
-
 div#main{
 	margin-top: 10px;
 	margin-left:250px;
 	padding: 20px
 }
-
+.admin{
+    margin-top: 10px;
+    margin-left:250px;
+    padding: 20px;
+    width:82% !important;
+}
 .pull-right{
 	float: right;
 }

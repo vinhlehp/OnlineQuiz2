@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		</head>
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
-		<title>Quiz List</title>
+		<title>Quiz List | Online Quiz System</title>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
@@ -41,7 +40,7 @@
 							if($qry->num_rows > 0){
 								while($row= $qry->fetch_assoc()){
 									$items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
-							?>
+						?>
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $row['title'] ?></td>
@@ -60,7 +59,7 @@
 						</tr>
 						<?php
 								}
-							}
+							}	
 						?>
 						</tbody>
 					</table>
@@ -71,7 +70,6 @@
 			<div class="modal-dialog modal-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						
 						<h4 class="modal-title" id="myModallabel">Add New quiz</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
@@ -90,7 +88,7 @@
 							<?php if($_SESSION['login_user_type'] == 1): ?>
 							<div class="form-group">
 								<label>Faculty</label>
-								<select name="user_id" required="required" class="form-control" />
+								<select name="user_id" required="required" class="form-control">
 								<option value="" selected="" disabled="">Select Here</option>
 								<?php
 									$qry = $conn->query("SELECT * from users where user_type = 2 order by name asc");
@@ -121,6 +119,7 @@
 				$('#manage_quiz #quiz-frm').get(0).reset()
 				$('#manage_quiz').modal('show')
 			})
+
 			$('.edit_quiz').click(function(){
 				var id = $(this).attr('data-id')
 				$.ajax({
@@ -135,24 +134,27 @@
 							$('[name="user_id"] ').val(resp.user_id)
 							$('#manage_quiz .modal-title').html('Edit Quiz')
 							$('#manage_quiz').modal('show')
+
 						}
 					}
 				})
 			})
+
 			$('.remove_quiz').click(function(){
 				var id = $(this).attr('data-id')
 				var conf = confirm('Are you sure to delete this data.');
 				if(conf == true){
 					$.ajax({
-					url:'./delete_quiz.php?id='+id,
-					error:err=>console.log(err),
-					success:function(resp){
-						if(resp == true)
-							location.reload()
-					}
-				})
+						url:'./delete_quiz.php?id='+id,
+						error:err=>console.log(err),
+						success:function(resp){
+							if(resp == true)
+								location.reload()
+						}
+					})
 				}
 			})
+
 			$('#quiz-frm').submit(function(e){
 				e.preventDefault();
 				$('#quiz-frm [name="submit"]').attr('disabled',true)

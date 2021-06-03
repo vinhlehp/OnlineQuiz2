@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -74,6 +75,7 @@
 				$('#manage_faculty #faculty-frm').get(0).reset()
 				$('#manage_faculty').modal('show')
 			})
+
 			$('.edit_faculty').click(function(){
 				var id = $(this).attr('data-id')
 				$.ajax({
@@ -90,24 +92,23 @@
 							$('[name="password"]').val(resp.password)
 							$('#manage_faculty .modal-title').html('Edit Faculty')
 							$('#manage_faculty').modal('show')
-
 						}
 					}
 				})
-
 			})
+
 			$('.remove_faculty').click(function(){
 				var id = $(this).attr('data-id')
 				var conf = confirm('Are you sure to delete this data.');
 				if(conf == true){
 					$.ajax({
-					url:'./delete_faculty.php?id='+id,
-					error:err=>console.log(err),
-					success:function(resp){
-						if(resp == true)
-							location.reload()
-					}
-				})
+						url:'./delete_faculty.php?id='+id,
+						error:err=>console.log(err),
+						success:function(resp){
+							if(resp == true)
+								location.reload()
+						}
+					})
 				}
 			})
 			$('#faculty-frm').submit(function(e){
@@ -134,7 +135,6 @@
 								location.reload()
 							}else{
 							$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
-
 							}
 						}
 					}

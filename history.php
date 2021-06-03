@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		</head>
-		<?php include('header.php') ?>
-		<?php include('auth.php') ?>
-		<?php include('db_connect.php') ?>
-		<title>History | Online Quiz System</title>
+	<?php include('header.php') ?>
+	<?php include('auth.php') ?>
+	<?php include('db_connect.php') ?>
+	<title>History | Online Quiz System</title>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
-		
+
 		<div class="container-fluid admin">
 			<div class="col-md-12 alert alert-primary">Quiz Records</div>
 			<br>
@@ -54,18 +53,16 @@
 							}
 							if(isset($_GET['quiz_id']) && $_GET['quiz_id'] != 'all'){
 								if(empty($where)){
-								$where = ' where q.id = '.$_GET['quiz_id'].' ';
-
+									$where = ' where q.id = '.$_GET['quiz_id'].' ';
 								}else{
-								$where = ' and q.id = '.$_GET['quiz_id'].' ';
-
+									$where = ' and q.id = '.$_GET['quiz_id'].' ';
 								}
 							}
 							$qry = $conn->query("SELECT h.*,u.name as student,q.title from history h inner join users u on h.user_id = u.id inner join quiz_list q on h.quiz_id = q.id ".$where." order by u.name asc ");
 							$i = 1;
 							if($qry->num_rows > 0){
-								while($row= $qry->fetch_assoc()){
-							?>
+								while($row= $qry->fetch_assoc()){		
+						?>
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo ucwords($row['student']) ?></td>
@@ -82,11 +79,11 @@
 			</div>
 		</div>
 	</body>
+
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable();
-			$('.select2').select2({
-			})
+			$('.select2').select2({})
 			$('#new_faculty').click(function(){
 				$('#msg').html('')
 				$('#manage_faculty .modal-title').html('Add New Faculty')
@@ -113,20 +110,20 @@
 						}
 					}
 				})
-
 			})
+
 			$('.remove_faculty').click(function(){
 				var id = $(this).attr('data-id')
 				var conf = confirm('Are you sure to delete this data.');
 				if(conf == true){
 					$.ajax({
-					url:'./delete_faculty.php?id='+id,
-					error:err=>console.log(err),
-					success:function(resp){
-						if(resp == true)
-							location.reload()
-					}
-				})
+						url:'./delete_faculty.php?id='+id,
+						error:err=>console.log(err),
+						success:function(resp){
+							if(resp == true)
+								location.reload()
+						}
+					})
 				}
 			})
 			$('#faculty-frm').submit(function(e){
@@ -151,8 +148,9 @@
 							if(resp.status == 1){
 								alert('Data successfully saved');
 								location.reload()
-							}else{
-							$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
+							}
+							else{
+								$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
 							}
 						}
 					}

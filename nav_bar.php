@@ -1,4 +1,3 @@
-<!-- Navigation Bar -->
 <nav class = "navbar navbar-header navbar-light bg-primary">
 	<div class = "container-fluid">
 		<div class = "navbar-header">
@@ -51,6 +50,7 @@
 		var loc = window.location.href;
 		loc.split('{/}')
 		$('#sidebar a').each(function(){
+		// console.log(loc.substr(loc.lastIndexOf("/") + 1),$(this).attr('href'))
 			if($(this).attr('href') == loc.substr(loc.lastIndexOf("/") + 1)){
 				$(this).addClass('active')
 			}

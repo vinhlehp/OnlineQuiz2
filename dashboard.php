@@ -24,7 +24,6 @@
         <link  rel="stylesheet" href="css/font.css">
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"  type="text/javascript"></script>
-        <link rel = " shortcut icon" type = "image/png" href = "./image/favicon.png"/>
     </head>
 
     <body>
@@ -58,30 +57,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <?php 
-                        if(@$_GET['q']==0){
-                            echo "<h1> Admin Page</h1>";
-                        }
+                    <?php if(@$_GET['q']==0){
+                        echo "<h1> Administrator Page!!</h1>";
+                    }
 
-                        if(@$_GET['q']== 2){
-                            $q=mysqli_query($con,"SELECT * FROM rank  ORDER BY score DESC " )or die('Error223');
-                            echo  '<div class="panel title"><div class="table-responsive">
-                            <table class="table table-striped title1" >
-                            <tr style="color:red"><td><center><b>Rank</b></center></td><td><center><b>Name</b></center></td><td><center><b>Score</b></center></td></tr>';
-                            $c=0;
-                            while($row=mysqli_fetch_array($q) ){
-                                $e=$row['email'];
-                                $s=$row['score'];
-                                $q12=mysqli_query($con,"SELECT * FROM user WHERE email='$e' " )or die('Error231');
-                                while($row=mysqli_fetch_array($q12) ){
-                                    $name=$row['name'];
-                                    $college=$row['college'];
-                                }
-                                $c++;
-                                echo '<tr><td style="color:#99cc32"><center><b>'.$c.'</b></center></td><td><center>'.$e.'</center></td><td><center>'.$s.'</center></td>';
+                    if(@$_GET['q']== 2){
+                        $q=mysqli_query($con,"SELECT * FROM rank  ORDER BY score DESC " )or die('Error223');
+                        echo  '<div class="panel title"><div class="table-responsive">
+                        <table class="table table-striped title1" >
+                        <tr style="color:red"><td><center><b>Rank</b></center></td><td><center><b>Name</b></center></td><td><center><b>Score</b></center></td></tr>';
+                        $c=0;
+                        while($row=mysqli_fetch_array($q) ){
+                            $e=$row['email'];
+                            $s=$row['score'];
+                            $q12=mysqli_query($con,"SELECT * FROM user WHERE email='$e' " )or die('Error231');
+                            while($row=mysqli_fetch_array($q12) ){
+                                $name=$row['name'];
+                                $college=$row['college'];
                             }
-                            echo '</table></div></div>';
+                            $c++;
+                            echo '<tr><td style="color:#99cc32"><center><b>'.$c.'</b></center></td><td><center>'.$e.'</center></td><td><center>'.$s.'</center></td>';
                         }
+                        echo '</table></div></div>';
+                    }
                     ?>
                     <?php 
                         if(@$_GET['q']==1){
@@ -89,7 +87,8 @@
                             echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
                             <tr><td><center><b>S.N.</b></center></td><td><center><b>Name</b></center></td><td><center><b>College</b></center></td><td><center><b>Email</b></center></td><td><center><b>Action</b></center></td></tr>';
                             $c=1;
-                            while($row = mysqli_fetch_array($result)){
+                            while($row = mysqli_fetch_array($result)) 
+                            {
                                 $name = $row['name'];
                                 $email = $row['email'];
                                 $college = $row['college'];
@@ -140,7 +139,6 @@
                                             <input  type="submit" style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
                                         </div>
                                     </div>
-
                                 </fieldset>
                             </form></div>';
                         }

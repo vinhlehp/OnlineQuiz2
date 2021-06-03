@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		</head>
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
@@ -13,12 +13,6 @@
 	</head>
 	<body>
 		<style>
-			/*li.answer{
-				cursor: pointer;
-			}
-			li.answer:hover{
-				background: #00c4ff3d;
-			}*/	
 			li.answer input:checked{
 				background: #00c4ff3d;
 			}
@@ -49,15 +43,15 @@
 								<br>
 								<ul class='list-group mt-4 mb-4'>
 								<?php while($orow = $opt->fetch_assoc()){ ?>
-
-									<li class="answer list-group-item <?php echo ($answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 )? "bg-success" : "bg-danger" ?>">
+									<li class="answer list-group-item <?php echo $answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 ? "bg-success" : "bg-danger" ?>">
 										<label><input type="radio" name="option_id[<?php echo $row['id'] ?>]" value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>> <?php echo $orow['option_txt'] ?></label>
 									</li>
 								<?php } ?>
 								</ul>
 							</li>
 						</ul>
-					<?php  	} ?>
+
+						<?php } ?>
 				</div>	
 			</div>
 		</div>

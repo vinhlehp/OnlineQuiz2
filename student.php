@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		</head>
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
-		<title>Student List</title>
+		<title>Student List | Online Quiz System</title>
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
@@ -34,11 +33,11 @@
 						</thead>
 						<tbody>
 						<?php
-						$qry = $conn->query("SELECT s.*,u.name from students s left join users u  on s.user_id = u.id order by u.name asc ");
-						$i = 1;
-						if($qry->num_rows > 0){
-							while($row= $qry->fetch_assoc()){
-							?>
+							$qry = $conn->query("SELECT s.*,u.name from students s left join users u  on s.user_id = u.id order by u.name asc ");
+							$i = 1;
+							if($qry->num_rows > 0){
+								while($row= $qry->fetch_assoc()){
+						?>
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $row['name'] ?></td>
@@ -51,7 +50,7 @@
 							</td>
 						</tr>
 						<?php
-							}
+								}
 							}
 						?>
 						</tbody>
@@ -131,13 +130,13 @@
 				var conf = confirm('Are you sure to delete this data.');
 				if(conf == true){
 					$.ajax({
-					url:'./delete_student.php?id='+id,
-					error:err=>console.log(err),
-					success:function(resp){
-						if(resp == true)
-							location.reload()
-					}
-				})
+						url:'./delete_student.php?id='+id,
+						error:err=>console.log(err),
+						success:function(resp){
+							if(resp == true)
+								location.reload()
+						}
+					})
 				}
 			})
 			$('#student-frm').submit(function(e){
@@ -164,7 +163,6 @@
 								location.reload()
 							}else{
 							$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
-
 							}
 						}
 					}

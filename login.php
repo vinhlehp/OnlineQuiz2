@@ -1,5 +1,3 @@
-<!-- Phần login ổn
-	Phần đăng ký vẫn chưa được, t nghĩ là do mình chưa link được tới database để insert data vào-->
 <!DOCTYPE html>
 	<head>
 		<title>Online Quiz System</title>
@@ -7,10 +5,10 @@
 		<!-- include header -->
 		<?php include('header.php') ?>
         <?php 
-        session_start();
-        if(isset($_SESSION['login_id'])){
-            header('Location:home.php');
-        }
+            session_start();
+            if(isset($_SESSION['login_id'])){
+                header('Location:home.php');
+            }
         ?>
 		<!--import css-->
 		<link rel = "stylesheet" href="./styles_login.css">
@@ -135,11 +133,9 @@
 						header("refresh:0;url=login.php");
 					}
 					else{
-						/* Lỗi câu truy vấn CSDL */	
-						$str="insert into user set name='$name',usernme='$username',password='$password',college='$college'";
+						$str="insert into user set name='$name',usernme='$username',password='$password',college='$college', user_type = 3";
 						if((mysqli_query($con,$str)))	
 						echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
-						/* Chỗ này cần phải link tới trang chủ của bài quiz sau khi đã đăng nhập*/
                         header('location: welcome.php?q=1');
 					}
 				}

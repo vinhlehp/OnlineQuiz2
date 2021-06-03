@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		</head>
 		<?php include('header.php') ?>
 		<?php include('auth.php') ?>
 		<?php include('db_connect.php') ?>
@@ -9,6 +8,7 @@
 	</head>
 	<body>
 		<?php include('nav_bar.php') ?>
+		
 		<div class="container-fluid admin">
 			<div class="col-md-12 alert alert-primary">Faculty List</div>
 			<button class="btn btn-primary bt-sm" id="new_faculty"><i class="fa fa-plus"></i>	Add New</button>
@@ -121,24 +121,22 @@
 							$('[name="password"]').val(resp.password)
 							$('#manage_faculty .modal-title').html('Edit Faculty')
 							$('#manage_faculty').modal('show')
-
 						}
 					}
 				})
-
 			})
 			$('.remove_faculty').click(function(){
 				var id = $(this).attr('data-id')
 				var conf = confirm('Are you sure to delete this data.');
 				if(conf == true){
 					$.ajax({
-					url:'./delete_faculty.php?id='+id,
-					error:err=>console.log(err),
-					success:function(resp){
-						if(resp == true)
-							location.reload()
-					}
-				})
+						url:'./delete_faculty.php?id='+id,
+						error:err=>console.log(err),
+						success:function(resp){
+							if(resp == true)
+								location.reload()
+						}
+					})
 				}
 			})
 			$('#faculty-frm').submit(function(e){
@@ -165,7 +163,6 @@
 								location.reload()
 							}else{
 							$('#msg').html('<div class="alert alert-danger">'+resp.msg+'</div>')
-
 							}
 						}
 					}
