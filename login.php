@@ -124,19 +124,18 @@
 					$college = stripslashes($college);
 					$college = addslashes($college);
 
-					$str="SELECT username from user WHERE username='$username'";
-					$result=mysqli_query($con,$str);
-
+					$str="SELECT username from users WHERE username='$username'";
+					$result=mysqli_query($conn,$str);
+			
 					/* check if username already registered */
-					if((mysqli_num_rows($result)) != 0){
-						echo "<center><h3><script>alert('Sorry.. This username is already registered!!');</script></h3></center>";
-						header("refresh:0;url=login.php");
+					if(mysqli_num_rows($result) != 0){
+						
 					}
 					else{
-						$str="insert into user set name='$name',username='$username',password='$password',college='$college', user_type = 3";
-						if((mysqli_query($con,$str)))	
-						echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
-                        header('location: welcome.php?q=1');
+						$str2="insert into users set name='$name',username='$username',password='$password',college='$college', user_type = 3, status = 1";
+						if (mysqli_query($conn, $str2)){
+							
+						}
 					}
 				}
 			?>

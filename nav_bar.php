@@ -4,7 +4,8 @@
 			<p class = "navbar-text pull-right text-white"><h3>Online Quiz System</h3></p>
 		</div>
 		<div class = "nav navbar-nav navbar-right">
-			<a href="logout.php" class="text-dark"><?php echo $name ?> <i class="fa fa-power-off"></i></a>
+		<h3><?php echo $name ?></h3>
+		<a href="logout.php" class="text-dark"> Log out &nbsp;<i class="fa fa-power-off"></i></a>
 		</div>
 	</div>
 </nav>
