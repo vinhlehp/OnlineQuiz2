@@ -127,7 +127,8 @@ CREATE TABLE `users` (
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0 = incative , 1 = active',
-  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `college` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table `users`
