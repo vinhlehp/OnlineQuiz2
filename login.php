@@ -100,12 +100,10 @@
 			})
     	</script>
 		
-		<!--sign up code-->
-		<script>
+		<!--sign up code-->	
 			<?php
 				include("db_connect.php");
-				session_start();
-				
+
 				if(isset($_POST['submit_sgUp'])){	
 					$name = $_POST['name'];
 					$name = stripslashes($name);
@@ -129,16 +127,15 @@
 			
 					/* check if username already registered */
 					if(mysqli_num_rows($result) != 0){
-						
+						echo "<script type='text/javascript'>alert('Sorry.. This username is already registered !!');</script>";
 					}
+
 					else{
 						$str2="insert into users set name='$name',username='$username',password='$password',college='$college', user_type = 3, status = 1";
-						if (mysqli_query($conn, $str2)){
-							
-						}
+						mysqli_query($conn,$str2);
+						echo "<script type='text/javascript'>alert('Congrats.. You have successfully registered !!');</script>";
 					}
 				}
 			?>
-		</script>
 	</body> 
 </html>

@@ -27,6 +27,7 @@
 							<tr>
 								<th>#</th>
 								<th>Quiz</th>
+								<th>Quiz Time (minutes)</th>
 								<th>Score</th>
 								<th>Status</th>
 								<th>Action</th>
@@ -44,6 +45,7 @@
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $row['title'] ?></td>
+							<td class = "q_time"><?php echo $row['quiz_time']?></td>		
 							<td><?php echo $status->num_rows > 0 ? $hist['score'].'/'.$hist['total_score'] : 'N/A' ?></td>
 							<td><?php echo $status->num_rows > 0 ? 'Taken' : 'Pending' ?></td>
 							<td>
@@ -67,6 +69,9 @@
 		</div>
 	</body>
 	<script>
+		const q_timer = document.querySelector('.q_time').textContent;
+		console.log(q_timer)
+		
 		$(document).ready(function(){
 			$('#table').DataTable();
 			$('#new_faculty').click(function(){

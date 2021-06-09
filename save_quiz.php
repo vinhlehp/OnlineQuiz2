@@ -6,6 +6,7 @@
 		$data=  " title='".$title."'";
 		$data .=  ", user_id='".$user_id."'";
 		$data .=  ", qpoints='".$qpoints."'";
+		$data .=  ", quiz_time='".$quiz_time."'";
 		$insert_user = $conn->query('INSERT INTO quiz_list set  '.$data);
 
 		if($insert_user){
@@ -15,8 +16,9 @@
 		$data=  " title='".$title."'";
 		$data .=  ", user_id='".$user_id."'";
 		$data .=  ", qpoints='".$qpoints."'";
+		$data .=  ", quiz_time='".$quiz_time."'";
 		$update = $conn->query('UPDATE quiz_list set  '.$data.' where id= '.$id);
-
+		
 		if($update){
 				echo json_encode(array('status'=>1,'id'=>$id));
 		}

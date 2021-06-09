@@ -44,7 +44,7 @@
 								<ul class='list-group mt-4 mb-4'>
 								<?php while($orow = $opt->fetch_assoc()){ ?>
 									<li class="answer list-group-item <?php echo ($answer['option_id'] == $orow['id'] && $answer['is_right'] == 1 ? "bg-success" : $orow['is_right'] == 1 )? "bg-success" : "bg-danger" ?>">
-										<label><input type="radio" name="option_id[<?php echo $row['id'] ?>]" value="<?php echo $orow['id'] ?>" <?php echo $answer['option_id'] == $orow['id']  ? "checked='checked'" : "" ?>> <?php echo $orow['option_txt'] ?></label>
+										<label><input type="radio" name="option_id[<?php echo $row['id'] ?>]" value="<?php echo $orow['id'] ?>" <?php echo isset($answer['option_id']) == isset($orow['id'])  ? "checked='checked'" : "" ?>> <?php echo $orow['option_txt'] ?></label>
 									</li>
 								<?php } ?>
 								</ul>

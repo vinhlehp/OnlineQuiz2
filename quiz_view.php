@@ -76,21 +76,18 @@
 									<textarea rows='3' name="question" required="required" class="form-control" ></textarea>
 								</div>
 									<label>Options:</label>
-
 								<div class="form-group">
-									<textarea rows="2" name ="question_opt[0]" required="" class="form-control" ></textarea>
-									<span>
 									<label><input type="radio" name="is_right[0]" class="is_right" value="1"> <small>Question Answer</small></label>
-									</span>
+									<textarea rows="2" name ="question_opt[0]" required="" class="form-control" placeholder="Answer number 1 (or A)"></textarea>
 									<br>
-									<textarea rows="2" name ="question_opt[1]" required="" class="form-control" ></textarea>
 									<label><input type="radio" name="is_right[1]" class="is_right" value="1"> <small>Question Answer</small></label>
+									<textarea rows="2" name ="question_opt[1]" required="" class="form-control" placeholder="Answer number 2 (or B)"></textarea>
 									<br>
-									<textarea rows="2" name ="question_opt[2]" required="" class="form-control" ></textarea>
 									<label><input type="radio" name="is_right[2]" class="is_right" value="1"> <small>Question Answer</small></label>
+									<textarea rows="2" name ="question_opt[2]" required="" class="form-control" placeholder="Answer number 3 (or C)" ></textarea>
 									<br>
-									<textarea rows="2" name ="question_opt[3]" required="" class="form-control" ></textarea>
 									<label><input type="radio" name="is_right[3]" class="is_right" value="1"> <small>Question Answer</small></label>
+									<textarea rows="2" name ="question_opt[3]" required="" class="form-control" placeholder="Answer number 4 (or D)"></textarea>
 								</div>
 							</div>
 							<div class="modal-footer">

@@ -30,37 +30,37 @@
 							</tr>
 						</thead>
 						<tbody>
-						<?php
-							$where = '';
-							if($_SESSION['login_user_type'] == 2){
-								$where = " where u.id = ".$_SESSION['login_id']." ";
-							}
-							$qry = $conn->query("SELECT q.*,u.name as fname from quiz_list q left join users u on q.user_id = u.id ".$where." order by q.title asc ");
-							$i = 1;
-							if($qry->num_rows > 0){
-								while($row= $qry->fetch_assoc()){
-									$items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
-						?>
-						<tr>
-							<td><?php echo $i++ ?></td>
-							<td><?php echo $row['title'] ?></td>
-							<td><?php echo $items ?></td>
-							<td><?php echo $row['qpoints'] ?></td>
-								<?php if($_SESSION['login_id'] ==1): ?>
-							<td><?php echo $row['fname'] ?></td>
-								<?php endif; ?>
-							<td>
-								<center>
-								<a class="btn btn-sm btn-outline-primary edit_quiz" href="./quiz_view.php?id=<?php echo $row['id']?>"><i class="fa fa-task"></i> Manage</a>
-								<button class="btn btn-sm btn-outline-primary edit_quiz" data-id="<?php echo $row['id']?>" type="button"><i class="fa fa-edit"></i> Edit</button>
-								<button class="btn btn-sm btn-outline-danger remove_quiz" data-id="<?php echo $row['id']?>" type="button"><i class="fa fa-trash"></i> Delete</button>
-								</center>
-							</td>
-						</tr>
-						<?php
+							<?php
+								$where = '';
+								if($_SESSION['login_user_type'] == 2){
+									$where = " where u.id = ".$_SESSION['login_id']." ";
 								}
-							}	
-						?>
+								$qry = $conn->query("SELECT q.*,u.name as fname from quiz_list q left join users u on q.user_id = u.id ".$where." order by q.title asc ");
+								$i = 1;
+								if($qry->num_rows > 0){
+									while($row= $qry->fetch_assoc()){
+										$items = $conn->query("SELECT count(id) as item_count from questions where qid = '".$row['id']."' ")->fetch_array()['item_count'];
+							?>
+							<tr>
+								<td><?php echo $i++ ?></td>
+								<td><?php echo $row['title'] ?></td>
+								<td><?php echo $items ?></td>
+								<td><?php echo $row['qpoints'] ?></td>
+									<?php if($_SESSION['login_id'] ==1): ?>
+								<td><?php echo $row['fname'] ?></td>
+									<?php endif; ?>
+								<td>
+									<center>
+									<a class="btn btn-sm btn-outline-primary edit_quiz" href="./quiz_view.php?id=<?php echo $row['id']?>"><i class="fa fa-task"></i> Manage</a>
+									<button class="btn btn-sm btn-outline-primary edit_quiz" data-id="<?php echo $row['id']?>" type="button"><i class="fa fa-edit"></i> Edit</button>
+									<button class="btn btn-sm btn-outline-danger remove_quiz" data-id="<?php echo $row['id']?>" type="button"><i class="fa fa-trash"></i> Delete</button>
+									</center>
+								</td>
+							</tr>
+							<?php
+									}
+								}	
+							?>
 						</tbody>
 					</table>
 				</div>
@@ -78,13 +78,19 @@
 							<div id="msg"></div>
 							<div class="form-group">
 								<label>Title</label>
-								<input type="hidden" name="id" />
-								<input type="text" name="title" required="required" class="form-control" />
+								<input type="hidden" name="id" >
+								<input type="text" name="title" required="required" class="form-control" >
 							</div>
 							<div class="form-group">
 								<label>Points per question</label>
-								<input type="nember" name ="qpoints" required="" class="form-control" />
+								<input type="number" name ="qpoints" required="" class="form-control">
 							</div>
+							<br>
+							<div class="form-group">
+								<label>Quiz Timer</label>	
+								<input type = "number" name="quiz_time" required = "" placeholder="Force student to do the quiz in a specified time." class="form-control" >
+							</div>
+
 							<?php if($_SESSION['login_user_type'] == 1): ?>
 							<div class="form-group">
 								<label>Faculty</label>
@@ -103,7 +109,7 @@
 							<?php endif; ?>
 						</div>
 						<div class="modal-footer">
-							<button  class="btn btn-primary" name="save"><span class="glyphicon glyphicon-save"></span> Save</button>
+							<button  class="btn btn-primary" name="save"><span class="glyphicon glyphicon-save"></span> Save </button>
 						</div>
 					</form>
 				</div>
@@ -134,7 +140,6 @@
 							$('[name="user_id"] ').val(resp.user_id)
 							$('#manage_quiz .modal-title').html('Edit Quiz')
 							$('#manage_quiz').modal('show')
-
 						}
 					}
 				})

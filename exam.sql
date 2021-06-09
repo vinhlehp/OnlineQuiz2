@@ -119,7 +119,7 @@ INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
 ('5b14226574ed5', 'ARP', '5b1422657d069'),
 ('5b142265b5d08', 'Session layer', '5b142265c09e3'),
 ('5b142265b5d08', 'Physical layer', '5b142265c09f5'),
-('5b142265b5d08', 'Data Link layer', '5b142265c09fa'),
+('5b142265b5d08',   , '5b142265c09fa'),
 ('5b142265b5d08', 'Application layer', '5b142265c09ff'),
 ('5b1422661d93f', '12.0.0.1', '5b14226635df5'),
 ('5b1422661d93f', '168.172.19.39', '5b14226635e04'),
